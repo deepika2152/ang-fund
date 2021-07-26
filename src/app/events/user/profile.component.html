@@ -1,0 +1,55 @@
+<div class="col-md-6 container">
+  <h3>Edit and update your Profile</h3>
+
+  <hr>
+  <form [(formGroup)]="profileForm"  (ngSubmit)="saveProfile(profileForm.value)" autocomplete="off" novalidate >
+    <div class="form-group" [ngClass]="{'error':!validateFirstName()}">
+      <label for="firstName">First Name :</label>
+
+      <em *ngIf="!validateFirstName() && profileForm.controls.firstName.errors.required">Required</em>
+      <em *ngIf="!validateFirstName() && profileForm.controls.firstName.errors.pattern">Must start with Letter</em>
+
+      <input  formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name..." />
+    </div>
+
+    <div class="form-group"  [ngClass]="{'error':!validateLastName()}">
+      <label for="lastName">Last Name :</label>
+      <em *ngIf="!validateLastName() && profileForm.controls.lastName.errors.pattern">Required</em>
+      <em *ngIf="!validateLastName() && profileForm.controls.lastName.errors.pattern">Must start with Letter</em>
+
+      <input formControlName="lastName"  id="lastName" type="text" class="form-control" placeholder="Last Name..." />
+    </div>
+
+    <div class="form-group">
+      <label for="dateOfBirth">Dob :</label>
+      <input  id="dateOfBirth" type="date" class="form-control" placeholder=" " />
+    </div>
+
+    <div class="form-group">
+      <label for="placeOfBirth">Pob :</label>
+      <input id="placeOfBirth" type="text" class="form-control" placeholder="Place... " />
+    </div>
+    <div class="form-group">
+      <label for="country">Country :</label>
+      <input id="country" type="text" class="form-control" placeholder="Country..." />
+    </div>
+
+    <div class="form-group">
+      <label for="mobileNumber">Mobile Number :</label>
+      <input id="mobileNumber" type="text" class="form-control" placeholder="Mobile Number..." />
+    </div>
+
+    <!-- <tr><td>First Name: </td><td><input type="text"> </td></tr>
+<tr><td>Dob: </td><td><input type="date"></td></tr>
+<tr><td>Time: </td><td><input type="time"></td></tr>
+<tr><td>Pob: </td><td><input type="number"></td></tr>
+<tr><td>Location: </td><td><textarea></textarea></td></tr>
+<tr><td>OnlineURL: </td><td><input type="text"></tr>
+<tr><td></td></tr>
+<tr></tr> -->
+    <br>
+    <button type="submit" class="btn btn-success" > Save & Update </button>
+    <button type="reset" class="btn btn-danger" (click)="cancel()">Cancel</button>
+
+  </form>
+</div>

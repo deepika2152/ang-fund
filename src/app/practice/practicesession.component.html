@@ -1,0 +1,42 @@
+<h2> This is Practice Session Page.</h2>
+<h4>Difference between ngif and hiddden ,ngshow</h4>
+<p>
+ngIf will add or remove the element from DOM based on condition or expression.
+ngIf else article angular will convert the ngIf element to "ng-template" element.</p>
+
+<p>hidden attribute in html5 and display none CSS will show or hide the HTML element.
+  Irrespective of display hide or show the paragraph element will be added to the DOM.
+</p>
+
+<span>*ngIf-true</span> <p *ngIf="true">This is added to DOM</p>
+
+
+<label>*ngIf-false</label><div *ngIf="false">This is removed from DOM, this is not loaded.</div>
+<br><br>
+
+
+<label>[hidden]-true : </label><input type="text" [hidden]="true"/>textbox is hidden in browser.
+<br>
+<label>[hidden]-fasle:</label><input type="text" [hidden]="false" />
+<p>textbox is displayed in browser.</p>
+<br>
+
+<span>ng-show-true</span>
+<p ng-show="true">This is shown in browser</p>
+
+<p *ng-show="false"> This is not shown in browser</p>
+<br>
+
+<p [style.display]="'block'"><label>[display]="block"</label>
+  This paragraph is visible.
+</p>
+<p [style.display]="'none'">
+  This paragraph is hidden but still in the DOM.
+</p>
+<p hidden>
+  This paragraph is hidden but still in the DOM.
+</p>
+
+
+
+

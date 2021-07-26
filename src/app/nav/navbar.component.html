@@ -1,0 +1,70 @@
+<div class=" " >
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary navbar-right" >
+  <a class="navbar-brand navbar-right" href="#" style="margin-left: 20px;">ngEvents</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['events']" routerLinkActive="active" routerLinkActiveOptions="{exact:true}">All Events </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['event/newevent']" routerLinkActive="active" routerLinkActiveOptions="{exact:true}">Create Event</a>
+      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Events
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+       </div>
+      </li>
+      <!--<li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>-->
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['event/practice']" routerLinkActive="active" routerLinkActiveOptions="{exact:true}">
+          Practice Session</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['nameeditor']" routerLinkActive="active"
+          routerLinkActiveOptions="{exact:true}">
+         Reactive Forms</a>
+      </li>
+
+      </ul>
+</div>
+
+    <form class="form my-2 my-lg-0 " (ngSubmit) ="searchSessions(searchTerm)" id="searchForm">
+          <div class="form-group form-control">
+         <input [(ngModel)] = "searchTerm"  name ="searchTerm" class="form mr-sm-2"
+         placeholder="Search here" aria-label="Search">
+             <button class="btn  btn-success my-2 my-sm-0"  modal-trigger="searchResults" >Search</button>
+          </div>
+    </form>
+<simple-modal closeOnBodyClick="true" elementId="searchResults" title="Matching Sessions">
+  <div class="list-group">
+    <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">
+      {{session.name}}
+    </a>
+  </div>
+</simple-modal>
+
+       <div> <ul class="nav "><li  class=" " id="searchForm"></li>
+       <li><a class="nav-link" *ngIf= "!auth.isAuthenticated()" [routerLink] ="['user/login']">Login</a></li>
+       <li><a class="nav-link" *ngIf= "auth.isAuthenticated()" [routerLink] ="['user/profile']">
+        Welcome {{auth.currentUser.userName }}</a></li>
+      </ul> </div>
+
+</nav>
+
+</div>
+

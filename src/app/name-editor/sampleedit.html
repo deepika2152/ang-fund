@@ -1,0 +1,57 @@
+
+<div class="col-md-4 container">
+<h2>Reactive Forms Example</h2>
+<form [formGroup]="editNameForm">
+
+<label for="uname">First Name:
+
+  </label>
+
+ <input type="text" id="uname" class="form-control" formControlName="uname"
+ [class.valid]="editNameForm.get('uname').valid &&
+        (editNameForm.get('uname').dirty || editNameForm.get('uname').touched)"
+ required/>
+
+<!--
+<input
+    id="toDo"
+    type="text"
+    class="form-control"
+    placeholder="What is it you want to do?"
+    formControlName="toDo"
+    [class.valid]="formGroup.get('toDo').valid &&
+        (formGroup.get('toDo').dirty || formGroup.get('toDo').touched)"
+    [class.invalid]="formGroup.get('toDo').invalid &&
+        (formGroup.get('toDo').dirty || formGroup.get('toDo').touched)" />
+
+
+  <div *ngIf="editNameForm.get('toDo').invalid &&
+        editNameForm.get('toDo').errors &&
+        (editNameForm.get('toDo').dirty || editNameForm.get('toDo').touched)">
+  <small class="text-danger" *ngIf="editNameForm.get('toDo').hasError('required')">
+    This field is required.
+  </small>
+  <small class="text-danger" *ngIf="editNameForm.get('toDo').hasError('minlength')">
+    The minimum length for this field is {{formGroup.get('toDo').errors.minlength.requiredLength}} characters.
+  </small>
+
+</div> -->
+
+<button class="btn btn-primary" [disabled]="editNameForm.invalid">Submit</button>
+<!--
+ <div *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert alert-danger">
+
+    <div *ngIf="name.errors?.required">
+      Name is required.
+    </div>
+
+    <div *ngIf="name.errors?.minlength">
+      Name must be at least 4 characters long.
+    </div>
+
+</div>
+<input type="submit" /> -->
+</form>
+
+</div>
+

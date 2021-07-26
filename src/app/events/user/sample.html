@@ -1,0 +1,27 @@
+
+<!--Reactive forms Implementation and validations:-->
+<!--3.reactive.html-->
+<form [([formGroup]="formsample")]>
+<input type="text" formControlName="uname">
+
+</form>
+
+
+
+
+<!-- 2.component.ts -->
+import {FormGroup, formControl,validators,FormBuilder} from @angular/forms;
+
+formsample: FormGroup;
+uname:FormControl;
+Constructor(private fb :FormBuilder)
+ngOnint()
+{
+ this.formsample=this.fb.group({
+   uname: ['',validators.required]
+ })
+}
+
+
+<!--1.module.ts-->
+import ReactiveFormModule

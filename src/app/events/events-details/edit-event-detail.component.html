@@ -1,0 +1,98 @@
+<div class="col-md-6 container"  [routerLink]="['event/editevent/id',event.id]">
+
+  <h3>Edit and update the Event </h3>
+
+  <hr>
+
+  <form #updateEventForm="ngForm" (ngSubmit)="updateEvent(updateEventForm.value)" autocomplete="off" novalidate>
+
+
+    <div class="form-group"
+      [ngClass]="{'error': updateEventForm.controls.name?.invalid && updateEventForm.controls.name?.touched}">
+      <label for="eventName">Event Name :</label>
+      <em *ngIf="updateEventForm.controls.name?.invalid && (updateEventForm.controls.name?.touched)">Required</em>
+      <input [(ngModel)]="editEvent.eventName" name="name" required id="eventName" type="text" class="form-control"
+        placeholder="Enter the Event ..." />
+    </div>
+
+
+    <div class="form-group"
+      [ngClass]="{'error': updateEventForm.controls.date?.invalid && updateEventForm.controls.date?.touched}">
+      <label for="dateOfEvent">Date Of Event Creation :</label>
+      <em *ngIf="updateEventForm.controls.date?.invalid && (updateEventForm.controls.date?.touched)">Required</em>
+      <input [(ngModel)]="editEvent.date" name="date" required id="dateOfEvent" type="date" class="form-control"
+        placeholder=" " />
+    </div>
+
+    <div class="form-group"
+      [ngClass]="{'error': updateEventForm.controls.time?.invalid && updateEventForm.controls.time?.touched}">
+      <label for="timeOfEvent">Time Of Event Creation :</label>
+      <em *ngIf="updateEventForm.controls.time?.invalid && (updateEventForm.controls.time?.touched)">Required</em>
+      <input [(ngModel)]="editEvent.time" name="time" required id="timeOfEvent" type="time" class="form-control"
+        placeholder=" " />
+    </div>
+
+
+
+    <div class="form-group"
+      [ngClass]="{'error': updateEventForm.controls.price?.invalid && updateEventForm.controls.price?.touched}">
+      <label for="priceOfEvent">Price Of Event :</label>
+      <em *ngIf="updateEventForm.controls.price?.invalid && (updateEventForm.controls.price?.touched)">Required</em>
+      <input [(ngModel)]="editEvent.price" name="price" required id="priceOfEvent" type="number" class="form-control"
+        placeholder=" Enter Price of Event..." />
+    </div>
+
+
+    <div ngModelGroup="location">
+      <div class="form-group"
+        [ngClass]="{'error': updateEventForm.controls.address?.invalid && updateEventForm.controls.address?.touched}">
+        <label for="address">Address Of Event :</label>
+        <em *ngIf="updateEventForm.controls.address?.invalid && (updateEventForm.controls.address?.touched)">Required</em>
+        <input [(ngModel)]="editEvent.location.address" name="address" id="address" required type="text"
+          class="form-control" placeholder=" Enter Address of Event..." />
+        <div class="row">
+          <div class="col-md-6">
+            <label for="city"></label>
+            <em *ngIf="updateEventForm.controls.city?.invalid && (updateEventForm.controls.city?.touched)">Required</em>
+            <input [(ngModel)]="editEvent.location.city" name="city" id="city" type="text" class="form-control"
+              placeholder="City..." />
+          </div>
+          <div class="col-md-6">
+            <label for="city"></label>
+            <input [(ngModel)]="editEvent.location.country" name="country" id="country" type="text" class="form-control"
+              placeholder="Country..." />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group"
+      [ngClass]="{'error': updateEventForm.controls.onlineURL?.invalid && updateEventForm.controls.onlineURL?.touched}">
+      <label for="onlineURL">OnlineURL :</label>
+      <input [(ngModel)]="editEvent.onlineURL" name="onlineURL" id="onlineURL" type="text" class="form-control" required
+        placeholder=" Enter OnlineURL of Event..." />
+    </div>
+    <div class="form-group"
+      [ngClass]="{'error': updateEventForm.controls.imageUrl?.invalid && updateEventForm.controls.imageUrl?.touched}">
+      <label for="imageUrl">Image:</label>
+      <em
+        *ngIf="updateEventForm.controls.imageUrl?.invalid && updateEventForm.controls.imageUrl?.touched && updateEventForm.controls.imageUrl?.errors.required">Required</em>
+      <em
+        *ngIf="updateEventForm.controls.imageUrl?.invalid && updateEventForm.controls.imageUrl?.touched  && updateEventForm.controls.imageUrl?.errors.pattern">Must
+        be a png or jpg url</em>
+      <input [(ngModel)]="editEvent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl"
+        type="text" class="form-control" placeholder="Enter the url of image..." />
+      <img [src]="updateEventForm.controls.imageUrl?.value" *ngIf="updateEventForm.controls.imageUrl?.valid" />
+    </div>
+    <!-- <tr><td>First Name: </td><td><input type="text"></td></tr>
+<tr><td>Dob: </td><td><input type="date"></td></tr>
+<tr><td>Time: </td><td><input type="time"></td></tr>
+<tr><td>Pob: </td><td><input type="number"></td></tr>
+<tr><td>Location: </td><td><textarea></textarea></td></tr>
+<tr><td>OnlineURL: </td><td><input type="text"></tr>
+<tr><td></td></tr>
+<tr></tr> -->
+    <br>
+    <button type="submit" class="btn btn-success">Edit & Update</button>
+    <button type="submit" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </form>
+</div>
